@@ -1,0 +1,5 @@
+.vscode/
+
+# FVM
+.fvm/
+!.vscode/settings.json
