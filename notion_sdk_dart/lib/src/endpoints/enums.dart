@@ -1,3 +1,5 @@
+// TODO: add EmojiRequest
+
 abstract class EnumMethod {
   String get snakeCase;
 }
