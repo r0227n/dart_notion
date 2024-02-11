@@ -1,0 +1,34 @@
+name: Dart PR Check CI
+
+on:
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  dart_analysis_and_format:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Setup Dart
+      uses: dart-lang/setup-dart@v1
+      with:
+        sdk: stable
+
+    - name: Install dependencies
+      run: dart pub get
+
+    - name: Run static analysis
+      run: dart analyze
+
+    - name: Check format
+      run: dart format --output=none --set-exit-if-changed .
+
+    - name: Format code
+      if: failure()
+      run: |
+        dart format .
+        git config --global user.name 'github-actions[bot]'
+        git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+        git commit -am "Format Dart code"
+        git push
