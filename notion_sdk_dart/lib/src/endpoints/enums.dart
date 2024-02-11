@@ -671,3 +671,38 @@ enum NumberFormat implements EnumMethod {
         .toLowerCase();
   }
 }
+
+enum ApiColor implements EnumMethod {
+	defaultColor, // default
+  gray,
+  brown,
+  orange,
+  yellow,
+  green,
+  blue,
+  purple,
+  pink,
+  red,
+  grayBackground,
+  brownBackground,
+  orangeBackground,
+  yellowBackground,
+  greenBackground,
+  blueBackground,
+  purpleBackground,
+  pinkBackground,
+  redBackground;
+
+	@override
+	String get snakeCase {
+		if (toString().contains('defaultColor')) {
+			return 'default';
+		}
+		
+		return toString()
+				.split('.')
+				.last
+				.replaceAllMapped(RegExp(r'[A-Z]'), (match) => '_${match.group(0)}')
+				.toLowerCase();
+	}
+}
