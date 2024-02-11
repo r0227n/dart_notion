@@ -673,7 +673,7 @@ enum NumberFormat implements EnumMethod {
 }
 
 enum ApiColor implements EnumMethod {
-	defaultColor, // default
+  defaultColor, // default
   gray,
   brown,
   orange,
@@ -693,16 +693,132 @@ enum ApiColor implements EnumMethod {
   pinkBackground,
   redBackground;
 
-	@override
-	String get snakeCase {
-		if (toString().contains('defaultColor')) {
-			return 'default';
-		}
-		
-		return toString()
-				.split('.')
-				.last
-				.replaceAllMapped(RegExp(r'[A-Z]'), (match) => '_${match.group(0)}')
-				.toLowerCase();
-	}
+  @override
+  String get snakeCase {
+    if (toString().contains('defaultColor')) {
+      return 'default';
+    }
+
+    return toString()
+        .split('.')
+        .last
+        .replaceAllMapped(RegExp(r'[A-Z]'), (match) => '_${match.group(0)}')
+        .toLowerCase();
+  }
+}
+
+enum LanguageRequest {
+  abap,
+  agda,
+  arduino,
+  assembly,
+  bash,
+  basic,
+  bnf,
+  c,
+  csharp, // C#
+  cpp, // C++
+  clojure,
+  coffeescript,
+  coq,
+  css,
+  dart,
+  dhall,
+  diff,
+  docker,
+  ebnf,
+  elixir,
+  elm,
+  erlang,
+  fsharp, // F#
+  flow,
+  fortran,
+  gherkin,
+  glsl,
+  go,
+  graphql,
+  groovy,
+  haskell,
+  html,
+  idris,
+  java,
+  javascript,
+  json,
+  julia,
+  kotlin,
+  latex,
+  less,
+  lisp,
+  livescript,
+  llvmIr, // llvm ir
+  lua,
+  makefile,
+  markdown,
+  markup,
+  matlab,
+  mathematica,
+  mermaid,
+  nix,
+  notionFormula, // notion formula
+  objectiveC, // objective-c
+  ocaml,
+  pascal,
+  perl,
+  php,
+  plainText, // plain text
+  powershell,
+  prolog,
+  protobuf,
+  purescript,
+  python,
+  r,
+  racket,
+  reason,
+  ruby,
+  rust,
+  sass,
+  scala,
+  scheme,
+  scss,
+  shell,
+  solidity,
+  sql,
+  swift,
+  toml,
+  typescript,
+  vbDotnet, // vb.net
+  verilog,
+  vhdl,
+  visualBasic, // visual basic
+  webassembly,
+  xml,
+  yaml,
+  javaCplusCsharp; // java/c/c++/c#
+
+  String get value {
+    switch (this) {
+      case LanguageRequest.csharp:
+        return 'C#';
+      case LanguageRequest.cpp:
+        return 'C++';
+      case LanguageRequest.fsharp:
+        return 'F#';
+      case LanguageRequest.llvmIr:
+        return 'llvm ir';
+      case LanguageRequest.notionFormula:
+        return 'notion formula';
+      case LanguageRequest.objectiveC:
+        return 'objective-c';
+      case LanguageRequest.plainText:
+        return 'plain text';
+      case LanguageRequest.vbDotnet:
+        return 'vb.net';
+      case LanguageRequest.visualBasic:
+        return 'visual basic';
+      case LanguageRequest.javaCplusCsharp:
+        return 'java/c/c++/c#';
+      default:
+        return toString().split('.').last;
+    }
+  }
 }
