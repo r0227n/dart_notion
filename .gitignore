@@ -1,0 +1,9 @@
+.vscode/
+
+# FVM
+.fvm/
+!.vscode/settings.json
+
+
+# sample project
+notion-sdk-js/
