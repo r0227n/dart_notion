@@ -580,3 +580,34 @@ enum TimeZoneRequest {
 
   const TimeZoneRequest(this.identifier);
 }
+
+enum RollupFunction {
+	count,
+  countValues,
+  empty,
+  notEmpty,
+  unique,
+  showUnique,
+  percentEmpty,
+  percentNotEmpty,
+  sum,
+  average,
+  median,
+  min,
+  max,
+  range,
+  earliestDate,
+  latestDate,
+  dateRange,
+  checked,
+  unchecked,
+  percentChecked,
+  percentUnchecked,
+  countPerGroup,
+  percentPerGroup,
+  showOriginal;
+
+	String get snakeCase {
+		return this.toString().split('.').last.replaceAllMapped(RegExp(r'[A-Z]'), (match) => '_${match.group(0)}').toLowerCase();
+	}
+}
